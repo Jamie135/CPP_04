@@ -25,11 +25,11 @@ int main()
 	wrongCat->makeSound();
 
 	std::cout << "Deep copy tests:" << std::endl;
-	Dog dog1("Doggo");
+	Dog dog1("Bulldog");
 	Dog dog2(dog1);
 	std::cout << dog1.getType() << " " << std::endl;
 	std::cout << dog2.getType() << " " << std::endl;
-	dog1.setType("Shiba inu");
+	dog1.setType("Tibetan");
 	std::cout << "Deep copy test result:" << std::endl;
 	std::cout << dog1.getType() << " " << std::endl;
 	std::cout << dog2.getType() << " " << std::endl;
