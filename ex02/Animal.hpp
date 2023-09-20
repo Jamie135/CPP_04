@@ -6,10 +6,10 @@
 class Animal {
 protected:
 	std::string	type;
-public:
 	Animal();
 	Animal(const std::string &type);
 	Animal(Animal &copy);
+public:
 	virtual ~Animal();
 	Animal& operator=(const Animal &src);
 	const std::string	&getType() const;

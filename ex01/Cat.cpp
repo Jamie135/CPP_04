@@ -8,7 +8,7 @@ Cat::Cat() : Animal("Cat"), brain(new Brain())
 
 Cat::Cat(Cat &copy) : Animal(copy.type), brain(new Brain((*copy.getBrain())))
 {
-	std::cout << "Cat: Constructor called" << std::endl;
+	std::cout << "Cat: Copy Constructor called" << std::endl;
 }
 
 Cat::~Cat()

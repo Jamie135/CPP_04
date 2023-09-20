@@ -7,23 +7,23 @@ int main()
 	Dog* dog = new Dog();
 	Cat* cat = new Cat();
 
-	dog->setIdeas("Cookie");
-	Dog* bulldog = new Dog(*dog);
+	dog->setIdeas("Treat");
+	Dog* dawg = new Dog(*dog);
 	std::cout << "Dog idea:" << std::endl;
 	std::cout << dog->getBrain()->getIdea(0) << std::endl;
 
-	std::cout << "Bulldog idea:" << std::endl;
-	std::cout << bulldog->getBrain()->getIdea(0) << std::endl;
+	std::cout << "Dawg idea:" << std::endl;
+	std::cout << dawg->getBrain()->getIdea(0) << std::endl;
 
 	std::cout << "Changing Dog's idea:" << std::endl;
-	dog->setIdeas("Bone");
+	dog->setIdeas("Toy");
 	std::cout << "Dog idea:" << std::endl;
 	std::cout << dog->getBrain()->getIdea(0) << std::endl;
 
-	std::cout << "Bulldog idea:" << std::endl;
-	std::cout << bulldog->getBrain()->getIdea(0) << std::endl;
+	std::cout << "Dawg idea:" << std::endl;
+	std::cout << dawg->getBrain()->getIdea(0) << std::endl;
 
-	delete bulldog;
+	delete dawg;
 	delete dog;
 	delete cat;
 
