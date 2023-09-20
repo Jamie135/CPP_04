@@ -1,4 +1,4 @@
-NAME = Conscience
+NAME = Abstract
 CC = clang++
 FLAGS = -Wall -Wextra -Werror -std=c++98
 FILES = Animal \
