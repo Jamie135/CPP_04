@@ -1,11 +1,11 @@
 NAME = Polymorphism
 CC = clang++
 FLAGS = -Wall -Wextra -Werror -std=c++98
-FILES = Animal.cpp \
-		Dog.cpp \
-		Cat.cpp \
-		WrongAnimal.cpp \
-		WrongCat.cpp \
+FILES = Animal \
+		Dog \
+		Cat \
+		WrongAnimal \
+		WrongCat \
 		main
 
 INCLS = Animal.hpp \

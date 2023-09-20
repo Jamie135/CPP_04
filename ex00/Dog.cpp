@@ -2,12 +2,12 @@
 
 Dog::Dog() : Animal("Dog")
 {
-	std::cout << "Dog Constructor called" << std::endl;
+	std::cout << "Dog: " << "Constructor called" << std::endl;
 }
 
 Dog::Dog(const std::string &type) : Animal(type)
 {
-	std::cout << "Dog Constructor called" << std::endl;
+	std::cout << "Dog: " << "Constructor called" << std::endl;
 }
 
 Dog::Dog(Dog &copy) : Animal(copy.type)
@@ -29,5 +29,5 @@ Dog& Dog::operator=(const Dog& src)
 
 void	Dog::makeSound(void) const
 {
-	std::cout << "Dog: Bark !!" << std::endl;
+	std::cout << "Dog: Woof!" << std::endl;
 }

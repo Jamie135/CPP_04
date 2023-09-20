@@ -7,7 +7,7 @@ Animal::Animal() : type("Animal")
 
 Animal::Animal(const std::string &type) : type(type)
 {
-	std::cout << "Animal: " << "Constructor called" << std::endl;
+	std::cout << "Animal " << type << "Constructor called" << std::endl;
 }
 
 Animal::Animal(Animal &copy) : type(copy.type)
@@ -39,5 +39,5 @@ void Animal::setType(const std::string &value)
 
 void	Animal::makeSound(void) const
 {
-	std::cout << "Animal: animalish sound !!" << std::endl;
+	std::cout << "Animal: *sound*" << std::endl;
 }
