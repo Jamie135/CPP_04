@@ -9,7 +9,7 @@ AMateria::~AMateria()
 AMateria::AMateria() : type("")
 {}
 
-AMateria::AMateria(AMateria &t) : type(t.type)
+AMateria::AMateria(AMateria &copy) : type(copy.type)
 {}
 
 AMateria& AMateria::operator=(AMateria const &src)
