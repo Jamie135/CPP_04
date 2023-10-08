@@ -7,7 +7,7 @@ Animal::Animal() : type("Animal")
 
 Animal::Animal(const std::string &type) : type(type)
 {
-	std::cout << "Animal " << type << "Constructor called" << std::endl;
+	std::cout << "Animal: " << type << " Constructor called" << std::endl;
 }
 
 Animal::Animal(Animal &copy) : type(copy.type)
