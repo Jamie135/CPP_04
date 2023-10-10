@@ -1,5 +1,5 @@
 NAME = Conscience
-CC = clang++
+CC = c++
 FLAGS = -Wall -Wextra -Werror -std=c++98
 FILES = Animal \
 		Dog \
