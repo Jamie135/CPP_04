@@ -19,10 +19,10 @@ int main()
 	me->equip(tmp);
 	tmp = src->createMateria("cure");
 	me->equip(tmp);
-	ICharacter* poke = new Character("Dragonite");
-	me->use(0, *poke);
-	me->use(1, *poke);
-	delete poke;
+	ICharacter* bob = new Character("bob");
+	me->use(0, *bob);
+	me->use(1, *bob);
+	delete bob;
 	delete me;
 	delete src;
 	return (0);
