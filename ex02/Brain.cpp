@@ -1,40 +1,64 @@
 #include "Brain.hpp"
 
+// Constructors
 Brain::Brain()
 {
-	std::cout << "Brain: Constructor called" << std::endl;
+	std::cout << "Brain Default Constructor called" << std::endl;
 }
 
-Brain::Brain(Brain &copy)
+Brain::Brain(const Brain &copy)
 {
-	std::cout << "Brain: Copy constructor called" << std::endl;
-	for (int i = 0; &copy != this && i < 100; i++)
-		ideas[i] = copy.ideas[i];
+	std::cout << "Brain Copy Constructor called" << std::endl;
+	*this = copy;
 }
 
+// Deconstructors
 Brain::~Brain()
 {
-	std::cout << "Brain: is destroyed" << std::endl;
+	std::cout << "Brain Deconstructor called" << std::endl;
 }
 
-Brain& Brain::operator=(const Brain &src)
+// Overloaded Operators
+Brain &Brain::operator=(const Brain &src)
 {
-	std::cout << "Brain: Copy assignment operator called" << std::endl;
-	for (int i = 0; &src != this && i < 100; i++)
-		ideas[i] = src.ideas[i];
-	return (*this);
+	std::cout << "Brain Assignation operator called" << std::endl;
+	if (this == &src)
+		return *this;
+	for (int i = 0; i < 100; i++)
+	{
+		if (src._ideas[i].length() > 0)
+			this->_ideas[i].assign(src._ideas[i]);
+	}
+	return *this;
 }
 
-std::string	Brain::getIdea(int index) const
+// Public Methods
+
+// Getter
+const std::string	Brain::getIdea(size_t i)const
 {
-	if (index >= 0 && index < 100)
-		return (ideas[index]);
+	if (i < 100)
+		return(this->_ideas[i]);
+	else
+		return ("\033[33mThere is only 100 ideas per brain.\033[0m");
+}
+
+const std::string *Brain::getIdeaAddress(size_t i)const
+{
+	if (i < 100)
+	{
+		const std::string	&stringREF = this->_ideas[i];
+		return(&stringREF);
+	}
 	else
 		return (NULL);
 }
 
-void	Brain::setIdea(int index, std::string idea)
+// Setter
+void	Brain::setIdea(size_t i, std::string idea)
 {
-	if (index >= 0 && index < 100)
-		ideas[index] = idea;
+	if (i < 100)
+		this->_ideas[i] = idea;
+	else
+		std::cout << "\033[33mThere is only 100 ideas per brain.\033[0m" << std::endl;
 }

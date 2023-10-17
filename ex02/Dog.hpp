@@ -1,21 +1,32 @@
 #ifndef DOG_HPP
 # define DOG_HPP
-# include "Animal.hpp"
-# include "Brain.hpp"
-# include <string>
+#include "Animal.hpp"
+#include "Brain.hpp"
 
-class Dog : public Animal 
+// classes
+
+class Dog: public Animal
 {
-private:
-	Brain*	brain;
-public:
-	Dog();
-	Dog(Dog &copy);
-	~Dog();
-	Dog& operator=(const Dog &src);
-	void	makeSound(void) const;
-	void	setIdeas(const std::string &idea);
-	Brain*	getBrain(void) const;
+	private:
+		Brain *_brain;
+
+	public:
+	// Constructors
+		Dog();
+		Dog(const Dog &copy);
+
+	// Deconstructors
+		~Dog();
+
+	// Overloaded Operators
+		Dog &operator=(const Dog &src);
+
+	// Public Methods
+		void makeSound(void)const;
+	// Getter
+		void getIdeas(void)const;
+	// Setter
+		void setIdea(size_t i, std::string idea);
 };
 
 #endif

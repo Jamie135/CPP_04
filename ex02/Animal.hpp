@@ -3,18 +3,28 @@
 # include <iostream>
 # include <string>
 
-class Animal {
-protected:
-	std::string	type;
-	Animal();
-	Animal(const std::string &type);
-	Animal(Animal &copy);
-public:
-	virtual ~Animal();
-	Animal& operator=(const Animal &src);
-	const std::string	&getType() const;
-	void				setType(const std::string &value);
-	virtual void		makeSound(void) const;
+class Animal
+{
+	protected:
+		std::string _type;
+		Animal();
+
+	public:
+	// Constructors
+		Animal(const Animal &copy);
+
+	// Deconstructors
+		virtual ~Animal();
+
+	// Overloaded Operators
+		Animal &operator=(const Animal &src);
+
+	// Public Methods
+		virtual void makeSound(void)const = 0;
+	// Getter
+		std::string getType(void)const;
+	// Setter
+
 };
 
 #endif

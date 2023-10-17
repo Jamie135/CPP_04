@@ -1,43 +1,43 @@
 #include "Animal.hpp"
 
-Animal::Animal() : type("Animal")
+// Constructors
+Animal::Animal():_type("default")
 {
-	std::cout << "Animal: " << "Constructor called" << std::endl;
+	std::cout << "Animal Default Constructor called" << std::endl;
 }
 
-Animal::Animal(const std::string &type) : type(type)
+Animal::Animal(const Animal &copy)
 {
-	std::cout << "Animal: " << type << " Constructor called" << std::endl;
+	std::cout << "Animal Copy Constructor called" << std::endl;
+	*this = copy;
 }
 
-Animal::Animal(Animal &copy) : type(copy.type)
-{
-	std::cout << "Animal: Copy constructor called" << std::endl;
-}
-
+// Deconstructors
 Animal::~Animal()
 {
-	std::cout << "Animal: " << type << " is destroyed" << std::endl;
+	std::cout << "Animal Deconstructor called" << std::endl;
 }
 
-Animal& Animal::operator=(const Animal &src)
+// Overloaded Operators
+Animal &Animal::operator=(const Animal &src)
 {
-	std::cout << "Animal: Copy assignment operator called" << std::endl;
-	type = src.type;
-	return (*this);
+	std::cout << "Animal Assignation operator called" << std::endl;
+	if (this == &src)
+		return *this;
+
+	this->_type = src._type;
+	return *this;
 }
 
-const std::string	&Animal::getType() const
+// Public Methods
+void Animal::makeSound(void)const
 {
-	return (type);
 }
 
-void Animal::setType(const std::string &value)
+// Getter
+std::string	Animal::getType(void)const
 {
-	type = value;
+	return (this->_type);
 }
 
-void	Animal::makeSound(void) const
-{
-	std::cout << "Animal: *sound*" << std::endl;
-}
+// Setter

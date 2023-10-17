@@ -1,47 +1,54 @@
 #include "Dog.hpp"
-#include <string>
 
-Dog::Dog() : Animal("Dog"), brain(new Brain())
+// Constructors
+Dog::Dog(): Animal()
 {
-	std::cout << "Dog: " << "Constructor called" << std::endl;
+	std::cout << "Dog Default Constructor called" << std::endl;
+	this->_type = "Dog";
+	this->_brain = new Brain();
 }
 
-Dog::Dog(Dog &copy) : Animal("Dog"), brain(new Brain((*copy.getBrain())))
+Dog::Dog(const Dog &copy): Animal()
 {
-	std::cout << "Dog: Copy constructor called" << std::endl;
+	std::cout << "Dog Copy Constructor called" << std::endl;
+	*this = copy;
 }
 
+// Deconstructors
 Dog::~Dog()
 {
-	delete brain;
-	std::cout << "Dog: " << type << " is destroyed" << std::endl;
+	delete(this->_brain);
+	std::cout << "Dog Deconstructor called" << std::endl;
 }
 
-Dog& Dog::operator=(const Dog& src)
+// Overloaded Operators
+Dog &Dog::operator=(const Dog &src)
 {
-	std::cout << "Dog: Copy assignment operator called" << std::endl;
-	if (&src != this)
-	{
-		type = src.type;
-		if (brain)
-			delete brain;
-		brain = new Brain((*src.getBrain()));
-	}
-	return (*this);
+	std::cout << "Dog Assignation operator called" << std::endl;
+	if (this == &src)
+		return *this;
+
+	this->_type = src._type;
+	this->_brain = new Brain();
+	*this->_brain = *src._brain;
+	return *this;
 }
 
-void	Dog::makeSound(void) const
+// Public Methods
+void	Dog::makeSound(void)const
 {
-	std::cout << "Dog: Woof!" << std::endl;
+	std::cout << this->getType() << " says: **Woof**" << std::endl;
 }
 
-Brain*	Dog::getBrain(void) const
+// Getter
+void	Dog::getIdeas(void)const
 {
-	return (brain);
+	for (int i = 0; i < 3; i++)// change the 3 to 100 to show all ideas
+		std::cout << "\tIdea " << i << " of the Dog is: \"" << this->_brain->getIdea(i) << "\" at the address " << this->_brain->getIdeaAddress(i) << std::endl;
 }
 
-void	Dog::setIdeas(const std::string &idea)
+// Setter
+void	Dog::setIdea(size_t i, std::string idea)
 {
-	for (int i = 0; i < 100; i++)
-		brain->setIdea(i, idea);
+		this->_brain->setIdea(i, idea);
 }

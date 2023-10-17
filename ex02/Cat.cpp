@@ -1,47 +1,54 @@
 #include "Cat.hpp"
-#include <string>
 
-Cat::Cat() : Animal("Cat"), brain(new Brain())
+// Constructors
+Cat::Cat(): Animal()
 {
-	std::cout << "Cat: " <<  "Constructor called" << std::endl;
+	std::cout << "Cat Default Constructor called" << std::endl;
+	this->_type = "Cat";
+	this->_brain = new Brain();
 }
 
-Cat::Cat(Cat &copy) : Animal(copy.type), brain(new Brain((*copy.getBrain())))
+Cat::Cat(const Cat &copy): Animal()
 {
-	std::cout << "Cat: Copy Constructor called" << std::endl;
+	std::cout << "Cat Copy Constructor called" << std::endl;
+	*this = copy;
 }
 
+// Deconstructors
 Cat::~Cat()
 {
-	delete brain;
-	std::cout << "Cat " << type << " is destroyed" << std::endl;
+	delete(this->_brain);
+	std::cout << "Cat Deconstructor called" << std::endl;
 }
 
-Cat& Cat::operator=(const Cat& src)
+// Overloaded Operators
+Cat &Cat::operator=(const Cat &src)
 {
-	std::cout << "Cat: Copy assignment operator called" << std::endl;
-	if (&src != this)
-	{
-		this->type = src.type;
-		if (brain)
-			delete brain;
-		brain = new Brain((*src.getBrain()));
-	}
-	return (*this);
+	std::cout << "Cat Assignation operator called" << std::endl;
+	if (this == &src)
+		return *this;
+
+	this->_type = src._type;
+	this->_brain = new Brain();
+	*this->_brain = *src._brain;
+	return *this;
 }
 
-void	Cat::makeSound(void) const
+// Public Methods
+void	Cat::makeSound(void)const
 {
-	std::cout << "Cat: Moew!" << std::endl;
+	std::cout << this->getType() << " says: **Meeeoow**" << std::endl;
 }
 
-Brain*	Cat::getBrain(void) const
+// Getter
+void	Cat::getIdeas(void)const
 {
-	return (brain);
+	for (int i = 0; i < 3; i++)// change the 3 to 100 to show all ideas
+		std::cout << "\tIdea " << i << " of the Cat is: \"" << this->_brain->getIdea(i) << "\" at the address " << this->_brain->getIdeaAddress(i) << std::endl;
 }
 
-void	Cat::setIdeas(const std::string &idea)
+// Setter
+void	Cat::setIdea(size_t i, std::string idea)
 {
-	for (int i = 0; i < 100; i++)
-		brain->setIdea(i, idea);
+		this->_brain->setIdea(i, idea);
 }

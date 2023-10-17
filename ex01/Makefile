@@ -5,11 +5,15 @@ FILES = Animal \
 		Dog \
 		Cat \
 		Brain \
+		WrongAnimal \
+		WrongCat \
 		main
 
 INCLS = Animal.hpp \
 		Dog.hpp \
 		Brain.hpp \
+		WrongAnimal.hpp \
+		WrongCat.hpp \
 		Cat.hpp
 
 SRCS = $(addsuffix .cpp, $(FILES))
