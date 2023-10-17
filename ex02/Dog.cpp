@@ -4,8 +4,8 @@
 Dog::Dog(): Animal()
 {
 	std::cout << "Dog Default Constructor called" << std::endl;
-	this->_type = "Dog";
-	this->_brain = new Brain();
+	this->type = "Dog";
+	this->brain = new Brain();
 }
 
 Dog::Dog(const Dog &copy): Animal()
@@ -17,7 +17,7 @@ Dog::Dog(const Dog &copy): Animal()
 // Deconstructors
 Dog::~Dog()
 {
-	delete(this->_brain);
+	delete(this->brain);
 	std::cout << "Dog Deconstructor called" << std::endl;
 }
 
@@ -28,9 +28,9 @@ Dog &Dog::operator=(const Dog &src)
 	if (this == &src)
 		return *this;
 
-	this->_type = src._type;
-	this->_brain = new Brain();
-	*this->_brain = *src._brain;
+	this->type = src.type;
+	this->brain = new Brain();
+	*this->brain = *src.brain;
 	return *this;
 }
 
@@ -44,11 +44,11 @@ void	Dog::makeSound(void)const
 void	Dog::getIdeas(void)const
 {
 	for (int i = 0; i < 3; i++)// change the 3 to 100 to show all ideas
-		std::cout << "\tIdea " << i << " of the Dog is: \"" << this->_brain->getIdea(i) << "\" at the address " << this->_brain->getIdeaAddress(i) << std::endl;
+		std::cout << "\tIdea " << i << " of the Dog is: \"" << this->brain->getIdea(i) << "\" at the address " << this->brain->getIdeaAddress(i) << std::endl;
 }
 
 // Setter
 void	Dog::setIdea(size_t i, std::string idea)
 {
-		this->_brain->setIdea(i, idea);
+		this->brain->setIdea(i, idea);
 }

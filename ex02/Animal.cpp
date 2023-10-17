@@ -1,7 +1,7 @@
 #include "Animal.hpp"
 
 // Constructors
-Animal::Animal():_type("default")
+Animal::Animal():type("default")
 {
 	std::cout << "Animal Default Constructor called" << std::endl;
 }
@@ -25,7 +25,7 @@ Animal &Animal::operator=(const Animal &src)
 	if (this == &src)
 		return *this;
 
-	this->_type = src._type;
+	this->type = src.type;
 	return *this;
 }
 
@@ -37,7 +37,7 @@ void Animal::makeSound(void)const
 // Getter
 std::string	Animal::getType(void)const
 {
-	return (this->_type);
+	return (this->type);
 }
 
 // Setter
