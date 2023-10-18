@@ -3,7 +3,7 @@
 #include "Ice.hpp"
 #include "Cure.hpp"
 
-int main(
+int main()
 {
 	{
 		IMateriaSource* src = new MateriaSource();
