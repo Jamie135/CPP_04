@@ -39,9 +39,7 @@ int main()
 		}
 		
 		std::cout << std::endl;
-		// me->showInventory();
 		std::cout << std::endl;
-		// src->showMateria();
 		std::cout << std::endl;
 		
 		ICharacter* bob = new Character("bob");
@@ -58,8 +56,6 @@ int main()
 		std::cout << "use inventory index 10 and -50" << std::endl;
 		me->use(10, *bob);
 		me->use(-50, *bob);
-		// me->showInventory();
-		// me->showGroundloot();
 		delete bob;
 		delete me;
 		delete src;
@@ -78,12 +74,19 @@ int main()
 		tmp = src->createMateria("ice");
 		
 		me.equip(tmp);
-		std::cout << me.getName() << " ";
-		// me.showInventory();
+		std::cout << me.getName() << std::endl;
+		me.showInventory();
+		me.unequip(0);
+		me.showLoot();
+
+		tmp = src->createMateria("cure");
+		me.equip(tmp);
 
 		Character test(me);
-		std::cout << "Copy of me ";
-		// test.showInventory();
+		std::cout << "Copy of me " << std::endl;
+		test.showInventory();
+		test.unequip(0);
+		test.showLoot();
 		delete src;
 	}
 	return 0;

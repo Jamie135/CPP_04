@@ -15,8 +15,8 @@ public:
 	MateriaSource(MateriaSource& copy);
 	~MateriaSource();
 	MateriaSource& operator=(const MateriaSource& src);
-	void	learnMateria(AMateria *m);
-	AMateria* createMateria(std::string const &type);
+	virtual void	learnMateria(AMateria *m);
+	virtual AMateria* createMateria(std::string const &type);
 };
 
 #endif
