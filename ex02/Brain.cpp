@@ -32,7 +32,7 @@ Brain &Brain::operator=(const Brain &src)
 	return *this;
 }
 
-// Public Methods
+// Public Methods utils (optional)
 
 // Getter
 const std::string	Brain::getIdea(size_t i)const

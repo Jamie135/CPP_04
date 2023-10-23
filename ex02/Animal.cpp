@@ -1,9 +1,14 @@
 #include "Animal.hpp"
 
 // Constructors
-Animal::Animal():type("default")
+Animal::Animal()
 {
 	std::cout << "Animal Default Constructor called" << std::endl;
+}
+
+Animal::Animal(std::string name) : type(name)
+{
+	std::cout << "Animal parametric constructor has been called" << std::endl;
 }
 
 Animal::Animal(const Animal &copy)
@@ -19,7 +24,7 @@ Animal::~Animal()
 }
 
 // Overloaded Operators
-Animal &Animal::operator=(const Animal &src)
+Animal &Animal::operator=(Animal const &src)
 {
 	std::cout << "Animal Assignation operator called" << std::endl;
 	if (this == &src)
@@ -35,7 +40,7 @@ void Animal::makeSound(void)const
 }
 
 // Getter
-std::string	Animal::getType(void)const
+const std::string	Animal::getType(void)const
 {
 	return (this->type);
 }

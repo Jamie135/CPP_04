@@ -1,54 +1,55 @@
 #include "Dog.hpp"
+#include <string>
 
-// Constructors
-Dog::Dog(): Animal()
+Dog::Dog() : Animal("Dog"), brain(new Brain())
 {
-	std::cout << "Dog Default Constructor called" << std::endl;
-	this->type = "Dog";
-	this->brain = new Brain();
+	std::cout << "Dog: " << "Constructor called" << std::endl;
 }
 
-Dog::Dog(const Dog &copy): Animal()
+Dog::Dog(Dog &copy) : Animal("Dog"), brain(new Brain((*copy.getBrain())))
 {
-	std::cout << "Dog Copy Constructor called" << std::endl;
-	*this = copy;
+	std::cout << "Dog: Copy constructor called" << std::endl;
 }
 
-// Deconstructors
 Dog::~Dog()
 {
-	delete(this->brain);
-	std::cout << "Dog Deconstructor called" << std::endl;
+	delete brain;
+	std::cout << "Dog: " << type << " is destroyed" << std::endl;
 }
 
-// Overloaded Operators
-Dog &Dog::operator=(const Dog &src)
+Dog &Dog::operator=(Dog const &src)
 {
-	std::cout << "Dog Assignation operator called" << std::endl;
-	if (this == &src)
-		return *this;
-
-	this->type = src.type;
-	this->brain = new Brain();
-	*this->brain = *src.brain;
-	return *this;
+	std::cout << "Dog: Copy assignment operator called" << std::endl;
+	if (&src != this)
+	{
+		type = src.type;
+		if (brain)
+			delete brain;
+		brain = new Brain((*src.getBrain()));
+	}
+	return (*this);
 }
 
-// Public Methods
-void	Dog::makeSound(void)const
+Animal	&Dog::operator= (Animal const &obj)
 {
-	std::cout << this->getType() << " says: **Woof**" << std::endl;
+	std::cout << "Dog: Copy assignement operator called" << std::endl;
+	this->type = obj.getType();
+	*this->brain = *obj.getBrain();
+	return (*this);
 }
 
-// Getter
-void	Dog::getIdeas(void)const
+void	Dog::makeSound(void) const
 {
-	for (int i = 0; i < 3; i++)// change the 3 to 100 to show all ideas
-		std::cout << "\tIdea " << i << " of the Dog is: \"" << this->brain->getIdea(i) << "\" at the address " << this->brain->getIdeaAddress(i) << std::endl;
+	std::cout << "Dog: Woof!" << std::endl;
 }
 
-// Setter
-void	Dog::setIdea(size_t i, std::string idea)
+Brain*	Dog::getBrain(void) const
 {
-		this->brain->setIdea(i, idea);
+	return (brain);
+}
+
+void	Dog::setIdeas(const std::string &idea)
+{
+	for (int i = 0; i < 100; i++)
+		brain->setIdea(i, idea);
 }

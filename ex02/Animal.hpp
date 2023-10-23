@@ -2,28 +2,26 @@
 # define ANIMAL_HPP
 # include <iostream>
 # include <string>
+# include "Brain.hpp"
 
 class Animal
 {
-	protected:
-		std::string type;
-		Animal();
+	public :
 
-	public:
-	// Constructors
-		Animal(const Animal &copy);
+		virtual ~Animal(void) = 0;
 
-	// Deconstructors
-		virtual ~Animal();
+		virtual Animal &operator = (Animal const &rhs);
 
-	// Overloaded Operators
-		Animal &operator=(const Animal &src);
+		virtual void		makeSound() const = 0;
+		virtual Brain		*getBrain() const = 0;	
+		const std::string	getType() const;
 
-	// Public Methods
-		virtual void makeSound(void)const = 0;
-	// Getter
-		std::string getType(void)const;
-	// Setter
+	protected :
+
+		Animal(void);
+		Animal(std::string name);
+		Animal(Animal const &src);
+		std::string		type;
 
 };
 

@@ -4,28 +4,19 @@
 # include "Brain.hpp"
 # include <string>
 
-class Cat: public Animal
+class Cat : public Animal 
 {
-	private:
-		Brain *brain;
-
-	public:
-	// Constructors
-		Cat();
-		Cat(const Cat &copy);
-
-	// Deconstructors
-		~Cat();
-
-	// Overloaded Operators
-		Cat &operator=(const Cat &src);
-
-	// Public Methods
-		void makeSound(void)const;
-	// Getter
-		void getIdeas(void)const;
-	// Setter
-		void setIdea(size_t i, std::string idea);
+private:
+	Brain*	brain;
+public:
+	Cat();
+	Cat(Cat &copy);
+	virtual	~Cat();
+	Cat &operator=(Cat const &src);
+	virtual Animal &operator= (Animal const &src);
+	virtual void	makeSound(void) const;
+	void	setIdeas(const std::string &idea);
+	Brain*	getBrain() const;
 };
 
 #endif

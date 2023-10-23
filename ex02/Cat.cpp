@@ -1,54 +1,55 @@
 #include "Cat.hpp"
+#include <string>
 
-// Constructors
-Cat::Cat(): Animal()
+Cat::Cat() : Animal("Cat"), brain(new Brain())
 {
-	std::cout << "Cat Default Constructor called" << std::endl;
-	this->type = "Cat";
-	this->brain = new Brain();
+	std::cout << "Cat: " <<  "Constructor called" << std::endl;
 }
 
-Cat::Cat(const Cat &copy): Animal()
+Cat::Cat(Cat &copy) : Animal(copy.type), brain(new Brain((*copy.getBrain())))
 {
-	std::cout << "Cat Copy Constructor called" << std::endl;
-	*this = copy;
+	std::cout << "Cat: Copy Constructor called" << std::endl;
 }
 
-// Deconstructors
 Cat::~Cat()
 {
-	delete(this->brain);
-	std::cout << "Cat Deconstructor called" << std::endl;
+	delete brain;
+	std::cout << "Cat " << type << " is destroyed" << std::endl;
 }
 
-// Overloaded Operators
-Cat &Cat::operator=(const Cat &src)
+Cat& Cat::operator=(Cat const &src)
 {
-	std::cout << "Cat Assignation operator called" << std::endl;
-	if (this == &src)
-		return *this;
-
-	this->type = src.type;
-	this->brain = new Brain();
-	*this->brain = *src.brain;
-	return *this;
+	std::cout << "Cat: Copy assignment operator called" << std::endl;
+	if (&src != this)
+	{
+		this->type = src.type;
+		if (brain)
+			delete brain;
+		brain = new Brain((*src.getBrain()));
+	}
+	return (*this);
 }
 
-// Public Methods
-void	Cat::makeSound(void)const
+Animal	&Cat::operator= (Animal const &obj)
 {
-	std::cout << this->getType() << " says: **Meeeoow**" << std::endl;
+	std::cout << "Cat: Virtual Copy assignement operator called" << std::endl;
+	this->type = obj.getType();
+	*this->brain = *obj.getBrain();
+	return (*this);
 }
 
-// Getter
-void	Cat::getIdeas(void)const
+void	Cat::makeSound(void) const
 {
-	for (int i = 0; i < 3; i++)// change the 3 to 100 to show all ideas
-		std::cout << "\tIdea " << i << " of the Cat is: \"" << this->brain->getIdea(i) << "\" at the address " << this->brain->getIdeaAddress(i) << std::endl;
+	std::cout << "Cat: Moew!" << std::endl;
 }
 
-// Setter
-void	Cat::setIdea(size_t i, std::string idea)
+Brain*	Cat::getBrain(void) const
 {
-		this->brain->setIdea(i, idea);
+	return (brain);
+}
+
+void	Cat::setIdeas(const std::string &idea)
+{
+	for (int i = 0; i < 100; i++)
+		brain->setIdea(i, idea);
 }

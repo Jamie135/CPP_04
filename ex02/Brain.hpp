@@ -5,16 +5,14 @@
 
 class Brain
 {
-	private:
-		std::string ideas[100];
-
 	public:
+		std::string ideas[100];
 	// Constructors
 		Brain();
 		Brain(const Brain &copy);
 
 	// Deconstructors
-		virtual ~Brain();
+		~Brain();
 
 	// Overloaded Operators
 		Brain &operator=(const Brain &src);

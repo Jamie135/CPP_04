@@ -1,79 +1,65 @@
-#include "Animal.hpp"
-#include "Cat.hpp"
 #include "Dog.hpp"
-#include "WrongAnimal.hpp"
+#include "Cat.hpp"
 #include "WrongCat.hpp"
-#include "Brain.hpp"
+#include <iostream>
 
 int main()
 {
-	// uncomment the following to show that the Animal constructor is
-	// now only usable by the inheritant classes
-
-	// const Animal *animal = new Animal();
-	// animal->makeSound();
-
-	std::cout << "\033[34mConstructing\033[0m" << std::endl;
-	const Animal	*meta[10];
-	for (int i = 0; i < 10; i++)
+	std::cout  << "Subject test"  << std::endl;
 	{
-		if (i % 2)
-			meta[i] = new Cat();
-		else
-			meta[i] = new Dog();
-	}
-	std::cout << std::endl;
+		// const Animal *meta = new Animal();
+		// Animal meta;
 
-	std::cout << "\033[34mTesting\033[0m" << std::endl;
-	for (int i = 0; i < 10; i++)
+		const Animal* j = new Dog();
+		std::cout << std::endl;
+		const Animal* i = new Cat();
+		std::cout << std::endl;
+		delete j;//should not create a leak
+		std::cout << std::endl;
+		delete i;
+		std::cout << std::endl;
+		std::cout << "_______________________________________________________\n" << std::endl;
+	}
+	std::cout  << "My test"  << std::endl;
 	{
+		Dog	*dog[3];
+		Cat	*cat[3];
+		Brain	*brain;
+		
+		for (int i = 0; i < 3; i++)
+			dog[i] = new Dog();
+		for (int i = 0; i < 3; i++)
+			cat[i] = new Cat();
 		std::cout << std::endl;
-		std::cout << "Animal _type: " << meta[i]->getType() << std::endl;
-		meta[i]->makeSound();
+
+		brain = dog[0]->getBrain();
+		brain->ideas[0] = "I'm dog";
+		brain->ideas[1] = "I love humans";
+		brain->ideas[2] = "I love eating";
+
+		brain = cat[0]->getBrain();
+		brain->ideas[0] = "I'm cat";
+		brain->ideas[1] = "I hate humans";
+		brain->ideas[2] = "I hate life";
+		
+		for (int i = 0; i < 3; i++)
+			std::cout << "DOG : idea [" << i << "] " << dog[0]->getBrain()->ideas[i] << std::endl;
+		for (int i = 0; i < 3; i++)
+			std::cout << "CAT : idea [" << i << "] " << cat[0]->getBrain()->ideas[i] << std::endl;
 		std::cout << std::endl;
+
+		std::cout << "Copy dog to cat test"  << std::endl;
+		*(cat[0]) = *(dog[0]);
+		for (int i = 0; i < 3; i++)
+			std::cout << "DOG : idea [" << i << "] " << dog[0]->getBrain()->ideas[i] << std::endl;
+		for (int i = 0; i < 3; i++)
+			std::cout << "CAT : idea [" << i << "] " << cat[0]->getBrain()->ideas[i] << std::endl;
+		std::cout << std::endl;
+
+		for (int i = 0; i < 3; i++)
+			delete dog[i];
+		for (int i = 0; i < 3; i++)
+			delete cat[i];
 	}
-	std::cout << std::endl;
-
-	std::cout << "\033[34mDeconstructing\033[0m" << std::endl;
-	for (int i = 0; i < 10; i++)
-		delete(meta[i]);
-
-//THIS PART IS FOR TESTING DEEP COPY ↓
-
-	std::cout << std::endl << std::endl;
-	std::cout << "#### showing that the copy constructor creates a deep copy ####" << std::endl;
-	std::cout << std::endl;
-
-	std::cout << "\033[34mConstructing\033[0m" << std::endl;
-	Dog *a = new Dog();
-	// Cat *a = new Cat();
-
-	a->setIdea(0, "I have to sniff it");
-	a->setIdea(1, "I have to pee on it");
-	a->setIdea(2, "I have to sniff it again");
-	a->setIdea(101, "some shit");
-
-	Dog *b = new Dog(*a);
-	// Cat *b = new Cat(*a);
-
-	std::cout << std::endl;
-
-	std::cout << "\033[34mTesting a\033[0m" << std::endl;
-	std::cout << "The " << a->getType() << " a has the following ideas: " << std::endl;
-	a->getIdeas();
-	std::cout << std::endl;
-
-	std::cout << "\033[34mDeconstructing a\033[0m" << std::endl;
-	delete(a);
-	std::cout << std::endl;
-
-	std::cout << "\033[34mTesting b\033[0m" << std::endl;
-	std::cout << "The " << b->getType() << " b has the following ideas: " << std::endl;
-	b->getIdeas();
-	std::cout << std::endl;
-
-	std::cout << "\033[34mDeconstructing b\033[0m" << std::endl;
-	delete(b);
-
-	return (0);
+	return 0;
 }
