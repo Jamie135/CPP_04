@@ -3,9 +3,8 @@
 # include <iostream>
 # include <string>
 
-class Brain {
-private:
-	std::string	ideas[100];
+class Brain 
+{
 public:
 	Brain();
 	Brain(Brain &copy);
@@ -13,6 +12,8 @@ public:
 	Brain& operator=(const Brain &src);
 	std::string	getIdea(int index) const;
 	void		setIdea(int index, std::string idea);
+
+	std::string	ideas[100];
 };
 
 #endif

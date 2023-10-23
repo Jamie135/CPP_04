@@ -11,9 +11,10 @@ private:
 public:
 	Cat();
 	Cat(Cat &copy);
-	~Cat();
-	Cat& operator=(const Cat &src);
-	void	makeSound(void) const;
+	virtual	~Cat();
+	Cat &operator=(Cat const &src);
+	virtual Animal &operator= (Animal const &src);
+	virtual void	makeSound(void) const;
 	void	setIdeas(const std::string &idea);
 	Brain*	getBrain() const;
 };

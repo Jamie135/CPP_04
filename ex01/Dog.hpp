@@ -11,8 +11,9 @@ private:
 public:
 	Dog();
 	Dog(Dog &copy);
-	~Dog();
-	Dog& operator=(const Dog &src);
+	virtual	~Dog();
+	virtual Dog &operator = (Dog const &src);
+	virtual Animal &operator= (Animal const &src);
 	void	makeSound(void) const;
 	void	setIdeas(const std::string &idea);
 	Brain*	getBrain(void) const;

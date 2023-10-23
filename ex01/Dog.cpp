@@ -17,7 +17,7 @@ Dog::~Dog()
 	std::cout << "Dog: " << type << " is destroyed" << std::endl;
 }
 
-Dog& Dog::operator=(const Dog& src)
+Dog &Dog::operator=(Dog const &src)
 {
 	std::cout << "Dog: Copy assignment operator called" << std::endl;
 	if (&src != this)
@@ -27,6 +27,14 @@ Dog& Dog::operator=(const Dog& src)
 			delete brain;
 		brain = new Brain((*src.getBrain()));
 	}
+	return (*this);
+}
+
+Animal	&Dog::operator= (Animal const &obj)
+{
+	std::cout << "Dog: Copy assignement operator called" << std::endl;
+	this->type = obj.getType();
+	*this->brain = *obj.getBrain();
 	return (*this);
 }
 
