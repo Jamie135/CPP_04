@@ -7,7 +7,7 @@ WrongAnimal::WrongAnimal() : type("WrongAnimal")
 
 WrongAnimal::WrongAnimal(const std::string &type) : type(type)
 {
-	std::cout << "WrongAnimal: " << "Constructor called" << std::endl;
+	std::cout << "WrongAnimal: " << type << " Constructor called" << std::endl;
 }
 
 WrongAnimal::WrongAnimal(WrongAnimal &copy) : type(copy.type)
@@ -39,5 +39,5 @@ void WrongAnimal::setType(const std::string &value)
 
 void	WrongAnimal::makeSound(void) const
 {
-	std::cout << "WrongAnimal: WrongAnimalish sound !!" << std::endl;
+	std::cout << "WrongAnimal: *does nothing*" << std::endl;
 }
