@@ -6,9 +6,9 @@ class Cat : public Animal {
 public:
 	Cat();
 	Cat(Cat &copy);
-	~Cat();
+	virtual	~Cat();
 	Cat& operator=(const Cat &src);
-	void	makeSound(void) const;
+	virtual void	makeSound(void) const;
 };
 
 #endif

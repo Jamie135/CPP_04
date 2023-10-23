@@ -32,11 +32,6 @@ const std::string	&WrongAnimal::getType() const
 	return (type);
 }
 
-void WrongAnimal::setType(const std::string &value)
-{
-	type = value;
-}
-
 void	WrongAnimal::makeSound(void) const
 {
 	std::cout << "WrongAnimal: *does nothing*" << std::endl;

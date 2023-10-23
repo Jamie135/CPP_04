@@ -7,9 +7,9 @@ public:
 	Dog();
 	Dog(const std::string &type);
 	Dog(Dog &copy);
-	~Dog();
+	virtual	~Dog();
 	Dog& operator=(const Dog &src);
-	void	makeSound(void) const;
+	virtual void	makeSound(void) const;
 };
 
 #endif
