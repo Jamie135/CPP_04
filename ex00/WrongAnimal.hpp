@@ -10,10 +10,10 @@ public:
 	WrongAnimal();
 	WrongAnimal(const std::string &type);
 	WrongAnimal(WrongAnimal &copy);
-	~WrongAnimal();
+	virtual	~WrongAnimal();
 	WrongAnimal& operator=(const WrongAnimal &src);
 	const std::string		&getType() const;
-	void	makeSound(void) const;
+	virtual void	makeSound(void) const;
 };
 
 #endif

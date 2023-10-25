@@ -38,6 +38,7 @@ std::cout << dog2.getType() << " " << std::endl;
 delete meta;
 delete j;
 delete i;
+delete w;
 delete x;
 return 0;
 }
